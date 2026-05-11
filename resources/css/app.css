@@ -6,11 +6,115 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
-    --color-ink: #0a0a0a;
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-ui: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+    --font-arabic: 'Amiri', 'Playfair Display', ui-serif, Georgia, serif;
+
+    --color-matte: #0a0a0c;
+    --color-matte-deep: #050506;
+    --color-charcoal: #14161c;
+    --color-charcoal-soft: #1a1d26;
     --color-gold: #c9a227;
-    --color-gold-soft: #e8d48b;
-    --color-midnight: #111015;
+    --color-gold-bright: #e6cf5c;
+    --color-gold-muted: #9a7b1c;
+    --color-ivory: #f4f1ea;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        font-family: var(--font-sans);
+    }
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+@layer components {
+    .font-display {
+        font-family: var(--font-display);
+    }
+    .font-ui {
+        font-family: var(--font-ui);
+    }
+
+    .lux-glass {
+        @apply border border-white/[0.08] bg-white/[0.04] backdrop-blur-2xl backdrop-saturate-150;
+    }
+
+    .lux-glass-strong {
+        @apply border border-white/[0.1] bg-[#0a0a0c]/80 backdrop-blur-2xl;
+    }
+
+    .lux-card {
+        @apply relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-b from-white/[0.05] to-transparent shadow-[0_28px_90px_-48px_rgba(0,0,0,0.95)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)];
+    }
+    .lux-card::before {
+        content: '';
+        @apply pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500;
+        background: radial-gradient(700px circle at var(--mouse-x, 50%) var(--mouse-y, 0%), rgba(201, 162, 39, 0.1), transparent 42%);
+    }
+    .lux-card:hover::before {
+        @apply opacity-100;
+    }
+    .lux-card:hover {
+        @apply border-[#c9a227]/22 -translate-y-1 shadow-[0_36px_110px_-40px_rgba(201,162,39,0.16)];
+    }
+
+    .lux-underline {
+        @apply relative inline-block;
+    }
+    .lux-underline::after {
+        content: '';
+        @apply pointer-events-none absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-[#c9a227] to-[#e6cf5c] transition-all duration-500 ease-out;
+    }
+    .lux-underline:hover::after {
+        @apply w-full;
+    }
+
+    .lux-reveal {
+        @apply opacity-0 translate-y-8 transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)];
+    }
+    .lux-reveal.is-visible {
+        @apply opacity-100 translate-y-0;
+    }
+
+    .hero-slide {
+        @apply absolute inset-0 transition-opacity duration-[1200ms] ease-[cubic-bezier(0.4,0,0.2,1)];
+    }
+    .hero-slide.is-active {
+        @apply z-[1] opacity-100;
+    }
+    .hero-slide:not(.is-active) {
+        @apply z-0 opacity-0 pointer-events-none;
+    }
+
+    .lux-section-title {
+        @apply font-display text-3xl font-normal tracking-tight text-[#f4f1ea] sm:text-4xl md:text-[2.75rem];
+    }
+
+    .lux-eyebrow {
+        @apply font-ui text-[10px] font-semibold uppercase tracking-[0.42em] text-[#c9a227];
+    }
+
+    .related-scroller {
+        @apply flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(201, 162, 39, 0.35) transparent;
+    }
+    .related-scroller > * {
+        @apply shrink-0 snap-start;
+    }
+}
+
+@keyframes lux-page-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

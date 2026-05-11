@@ -10,8 +10,9 @@ class Product extends Model
 {
     protected $fillable = [
         'brand_id', 'category_id', 'name', 'slug', 'sku', 'short_description', 'description',
-        'fragrance_type', 'gender', 'base_price', 'compare_at_price', 'is_featured', 'is_new',
-        'is_bestseller', 'is_on_sale', 'meta_title', 'meta_description', 'is_active',
+        'top_notes', 'middle_notes', 'base_notes',
+        'fragrance_type', 'gender', 'product_type', 'base_price', 'compare_at_price', 'is_featured', 'is_new',
+        'is_bestseller', 'is_on_sale', 'is_limited_edition', 'meta_title', 'meta_description', 'is_active',
     ];
 
     protected function casts(): array
@@ -23,6 +24,7 @@ class Product extends Model
             'is_new' => 'boolean',
             'is_bestseller' => 'boolean',
             'is_on_sale' => 'boolean',
+            'is_limited_edition' => 'boolean',
             'is_active' => 'boolean',
         ];
     }

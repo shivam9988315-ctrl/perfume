@@ -45,6 +45,12 @@ class ProductController extends Controller
         if ($request->boolean('sale')) {
             $query->where('is_on_sale', true);
         }
+        if ($request->filled('type')) {
+            $query->where('product_type', $request->string('type'));
+        }
+        if ($request->boolean('limited')) {
+            $query->where('is_limited_edition', true);
+        }
         if ($request->filled('search')) {
             $s = '%'.$request->string('search').'%';
             $query->where(function ($q) use ($s) {

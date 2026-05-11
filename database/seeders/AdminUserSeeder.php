@@ -14,7 +14,7 @@ class AdminUserSeeder extends Seeder
             ['email' => 'admin@perfume.test'],
             [
                 'name' => 'Store Admin',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('12345'),
                 'email_verified_at' => now(),
                 'locale' => 'en',
                 'currency' => 'USD',

@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Illuminate\Support\Number;
 
 class CommerceStatsWidget extends StatsOverviewWidget
 {
@@ -19,7 +18,7 @@ class CommerceStatsWidget extends StatsOverviewWidget
         $customers = User::query()->role('customer')->count();
 
         return [
-            Stat::make('Revenue (paid)', Number::currency($revenue, 'USD'))
+            Stat::make('Revenue (paid)', '$'.number_format($revenue, 2))
                 ->description('All-time paid orders'),
             Stat::make('Orders', (string) $ordersCount)
                 ->description('Total placed'),

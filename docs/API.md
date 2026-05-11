@@ -26,7 +26,7 @@ JWTs are issued by `php-open-source-saver/jwt-auth` (`auth:api` guard).
 |--------|------|-------------|
 | GET | `/categories` | Root categories with children. |
 | GET | `/categories/{slug}` | Category with active products. |
-| GET | `/products` | Paginated list. Query: `category`, `brand`, `gender`, `fragrance_type`, `min_price`, `max_price`, `search`, `featured`, `new`, `bestseller`, `sale`, `sort` (`newest`, `price_asc`, `price_desc`), `per_page`. |
+| GET | `/products` | Paginated list. Query: `category`, `brand`, `gender`, `fragrance_type`, `min_price`, `max_price`, `search`, `featured`, `new`, `bestseller`, `sale`, `type` (product line: `perfume`, `attar`, `oud`, etc.), `limited` (boolean), `sort` (`newest`, `price_asc`, `price_desc`), `per_page`. |
 | GET | `/products/{slug}` | Product detail with related items. |
 
 ## Cart (auth)

@@ -30,8 +30,30 @@ class ProductForm
                     ->columnSpanFull(),
                 Textarea::make('description')
                     ->columnSpanFull(),
+                Textarea::make('top_notes')
+                    ->label('Top notes')
+                    ->rows(2)
+                    ->columnSpanFull(),
+                Textarea::make('middle_notes')
+                    ->label('Middle notes')
+                    ->rows(2)
+                    ->columnSpanFull(),
+                Textarea::make('base_notes')
+                    ->label('Base notes')
+                    ->rows(2)
+                    ->columnSpanFull(),
                 TextInput::make('fragrance_type'),
                 TextInput::make('gender'),
+                Select::make('product_type')
+                    ->options([
+                        'perfume' => 'Perfume',
+                        'attar' => 'Attar',
+                        'oud' => 'Oud',
+                        'arabic_collection' => 'Arabic collection',
+                        'luxury_collection' => 'Luxury collection',
+                    ])
+                    ->default('perfume')
+                    ->required(),
                 TextInput::make('base_price')
                     ->required()
                     ->numeric()
@@ -47,6 +69,8 @@ class ProductForm
                     ->required(),
                 Toggle::make('is_on_sale')
                     ->required(),
+                Toggle::make('is_limited_edition')
+                    ->label('Limited edition'),
                 TextInput::make('meta_title'),
                 TextInput::make('meta_description'),
                 Toggle::make('is_active')
